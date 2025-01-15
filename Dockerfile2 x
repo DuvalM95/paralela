@@ -1,0 +1,6 @@
+FROM gcc:12
+RUN apt-get update && apt-get install -y libomp-dev
+COPY . /app
+WORKDIR /app
+RUN g++ -fopenmp -o microservice matrix_sum_unsync.cpp
+CMD ["./microservice"]
